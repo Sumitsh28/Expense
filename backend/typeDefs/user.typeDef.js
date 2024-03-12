@@ -1,42 +1,40 @@
 const userTypeDef = `#graphql
-  type User{
+  type User {
     _id: ID!
     username: String!
     name: String!
     password: String!
     profilePicture: String
     gender: String!
-
+    transactions: [Transaction!]
   }
 
-  type Query{
-    
+  type Query {
     authUser: User
-    user(userId: ID!) : User
+    user(userId:ID!): User
   }
 
   type Mutation {
-    signUp(input: SignUpInput!) : User
-    logIn(input: LogInInput!) : User
-    logOut: LogOutResponse
+    signUp(input: SignUpInput!): User
+    login(input: LoginInput!): User
+    logout: LogoutResponse
   }
 
   input SignUpInput {
     username: String!
     name: String!
-    pasword: String!
+    password: String!
     gender: String!
   }
 
-  input LogInInput {
+  input LoginInput {
     username: String!
-    pasword: String!
+    password: String!
   }
 
-  type LogOutResponse {
+  type LogoutResponse {
     message: String!
   }
-
 `;
 
 export default userTypeDef;
